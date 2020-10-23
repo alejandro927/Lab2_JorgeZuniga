@@ -8,6 +8,7 @@ package lab2_jorgezuniga;
 import javax.swing.JOptionPane;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *
@@ -183,7 +184,67 @@ public class Lab2_JorgeZuniga {
                 }
                 break;
                 case 5: {
-
+                    int tip1,tip2;
+                    String lugar,descripcion,tipo1,estado;
+                    System.out.println("Ingrese el lugar del caso:");
+                    lugar = entrada.nextLine();
+                    lugar = entrada.nextLine();
+                    System.out.println("Descripcion:");
+                    descripcion = entrada.nextLine();
+                    descripcion = entrada.nextLine();
+                    System.out.println("Que tipo es:\n"
+                            + "1)Homicidio\n"
+                            + "2)Robo\n"
+                            + "3)Secuestro\n"
+                            + "Ingrese su opcion:");
+                    tip1 = entrada.nextInt();
+                    while(tip1<1 || tip1 > 3){
+                        System.out.println("Numero ingresado no valido ingrese nuevamente:");
+                        tip1 = entrada.nextInt();
+                    }
+                switch (tip1) {
+                    case 1:
+                        tipo1 = "Homicidio";
+                        break;
+                    case 2:
+                        tipo1 = "Robo";
+                        break;
+                    case 3:
+                        tipo1 = "Secuestro";
+                        break;
+                }
+                    System.out.println("Detective a cargo:\n");
+                    
+                    if (tip1==1) {
+                        int p;
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        //p = Collections.max(((detectives)dete.get()).getNivel());
+                        //((detectives)dete.get()).getNivel();
+                    }
+                    System.out.println("Estado:\n"
+                            + "1)En proceso\n"
+                            + "2)Resuelto\n"
+                            + "Ingrese su opcion:");
+                    tip2 = entrada.nextInt();
+                    while(tip2<1 || tip2 > 2){
+                        System.out.println("Numero ingresado no valido ingrese nuevamente:");
+                        tip2 = entrada.nextInt();
+                    }
+                    if (tip2==1) {
+                        estado = "En proceso";
+                    }else if (tip2==2) {
+                        estado = "Resuelto";
+                    }
+                    
                 }
                 break;
                 case 6: {
