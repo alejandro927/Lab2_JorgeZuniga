@@ -23,10 +23,13 @@ public class Lab2_JorgeZuniga {
      */
     public static void main(String[] args) {
         ArrayList dete = new ArrayList();
-        ArrayList casos = new ArrayList();
+        ArrayList ca = new ArrayList();
+        ArrayList resuelto = new ArrayList();
+        ArrayList pendiente = new ArrayList();
+
         char resp = 's';
         while (resp == 's') {
-            int opp;
+            int opp, cont1 = 0, cont2 = 0;
             System.out.println("=====MENU=====\n"
                     + "1) Agregar detectives\n"
                     + "2) Eliminar detectives.\n"
@@ -99,7 +102,7 @@ public class Lab2_JorgeZuniga {
                 }
                 break;
                 case 3: {
-                    if (dete.isEmpty() ) {
+                    if (dete.isEmpty()) {
                         System.out.println("No hay ningun detective por lo tanto no se puede modificar");
                         break;
                     }
@@ -163,7 +166,7 @@ public class Lab2_JorgeZuniga {
                             break;
 
                         }
-                        
+
                     }
                     String salida = "";
                     System.out.println("Su nueva lista es:");
@@ -184,83 +187,214 @@ public class Lab2_JorgeZuniga {
                 }
                 break;
                 case 5: {
-                    int tip1,tip2;
-                    String lugar,descripcion,tipo1,estado;
-                    System.out.println("Ingrese el lugar del caso:");
-                    lugar = entrada.nextLine();
-                    lugar = entrada.nextLine();
-                    System.out.println("Descripcion:");
-                    descripcion = entrada.nextLine();
-                    descripcion = entrada.nextLine();
-                    System.out.println("Que tipo es:\n"
-                            + "1)Homicidio\n"
-                            + "2)Robo\n"
-                            + "3)Secuestro\n"
-                            + "Ingrese su opcion:");
-                    tip1 = entrada.nextInt();
-                    while(tip1<1 || tip1 > 3){
-                        System.out.println("Numero ingresado no valido ingrese nuevamente:");
-                        tip1 = entrada.nextInt();
-                    }
-                switch (tip1) {
-                    case 1:
-                        tipo1 = "Homicidio";
-                        break;
-                    case 2:
-                        tipo1 = "Robo";
-                        break;
-                    case 3:
-                        tipo1 = "Secuestro";
-                        break;
-                }
-                    System.out.println("Detective a cargo:\n");
-                    
-                    if (tip1==1) {
-                        int p;
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        //p = Collections.max(((detectives)dete.get()).getNivel());
-                        //((detectives)dete.get()).getNivel();
-                    }
+
+                    int tip1, tip2;
+                    String lugar, descripcion, tipo1 = "", estado = "";
                     System.out.println("Estado:\n"
                             + "1)En proceso\n"
                             + "2)Resuelto\n"
                             + "Ingrese su opcion:");
                     tip2 = entrada.nextInt();
-                    while(tip2<1 || tip2 > 2){
+                    while (tip2 < 1 || tip2 > 2) {
                         System.out.println("Numero ingresado no valido ingrese nuevamente:");
                         tip2 = entrada.nextInt();
                     }
-                    if (tip2==1) {
-                        estado = "En proceso";
-                    }else if (tip2==2) {
-                        estado = "Resuelto";
+                    switch (tip2) {
+                        case 1: {
+                            estado = "En proceso";
+                            System.out.println("Ingrese el lugar del caso:");
+                            lugar = entrada.nextLine();
+                            lugar = entrada.nextLine();
+                            System.out.println("Descripcion:");
+                            descripcion = entrada.nextLine();
+                            System.out.println("Que tipo es:\n"
+                                    + "1)Homicidio\n"
+                                    + "2)Robo\n"
+                                    + "3)Secuestro\n"
+                                    + "Ingrese su opcion:");
+                            tip1 = entrada.nextInt();
+                            while (tip1 < 1 || tip1 > 3) {
+                                System.out.println("Numero ingresado no valido ingrese nuevamente:");
+                                tip1 = entrada.nextInt();
+                            }
+                            switch (tip1) {
+                                case 1:
+                                    tipo1 = "Homicidio";
+                                    break;
+                                case 2:
+                                    tipo1 = "Robo";
+                                    break;
+                                case 3:
+                                    tipo1 = "Secuestro";
+                                    break;
+                            }
+                            System.out.println("Detective a cargo:\n");
+                            resuelto.add(new casos(lugar, descripcion, tipo1, estado));
+                            ca.add(cont1, resuelto);
+                            cont1++;
+                        }
+                        break;
+                        case 2: {
+                            estado = "Resuelto";
+                            System.out.println("Ingrese el lugar del caso:");
+                            lugar = entrada.nextLine();
+                            lugar = entrada.nextLine();
+                            System.out.println("Descripcion:");
+                            descripcion = entrada.nextLine();
+                            System.out.println("Que tipo es:\n"
+                                    + "1)Homicidio\n"
+                                    + "2)Robo\n"
+                                    + "3)Secuestro\n"
+                                    + "Ingrese su opcion:");
+                            tip1 = entrada.nextInt();
+                            while (tip1 < 1 || tip1 > 3) {
+                                System.out.println("Numero ingresado no valido ingrese nuevamente:");
+                                tip1 = entrada.nextInt();
+                            }
+                            switch (tip1) {
+                                case 1:
+                                    tipo1 = "Homicidio";
+                                    break;
+                                case 2:
+                                    tipo1 = "Robo";
+                                    break;
+                                case 3:
+                                    tipo1 = "Secuestro";
+                                    break;
+                            }
+                            System.out.println("Detective a cargo:\n");
+                            pendiente.add(new casos(lugar, descripcion, tipo1, estado));
+                            ca.add(cont2, pendiente);
+                            cont2++;
+                        }
                     }
-                    
+
                 }
                 break;
                 case 6: {
+                    
+                    String salida = "";
+                    System.out.println("Su lista de casos es:\n");
+                    for (Object t : ca) {
+                        salida += "" + ca.indexOf(t) + "=> " + t + "\n";
+                    }
+                    System.out.println(salida);
+                    int posi;
+                    System.out.println("Ingrese la posicion del caso que desea modificar:");
+                    posi = entrada.nextInt();
+                    if (posi < 0 || posi > ca.size()) {
+                        System.out.println("Posicion fuera de rango");
+                        break;
+                    }
+                    int op;
+                    System.out.println("Las modificaciones puede ser a:\n"
+                            + "1)Lugar\n"
+                            + "2)Descripcion\n"
+                            + "3)Tipo\n"
+                            + "4)Estado\n"
+                            + "Ingrese su opcion:");
+                    op = entrada.nextInt();
+                    switch (op) {
+                        case 1: {
+                            String lugar;
+                            System.out.println("Ingrese el nuevo lugar:");
+                            lugar = entrada.nextLine();
+                            lugar = entrada.nextLine();
+                            System.out.println("Modificado exitosamente!");
+                            ((casos) ca.get(posi)).setLugar(lugar);
+                            ((Granos_Basicos) granos.get(posi)).setNombre(nombre);
+                        }
+                        break;
+                        case 2: {
+                            String Descripcion;
+                            System.out.println("Ingrese la nueva descripcion:");
+                            Descripcion = entrada.nextLine();
+                            Descripcion = entrada.nextLine();
+                            System.out.println("Modificado exitosamente!");
+
+                            ((casos) ca.get(posi)).setDescripcion(Descripcion);
+                        }
+                        break;
+                        case 3: {
+                            int tip1;
+                            String tipo1;
+                            System.out.println("Que tipo es:\n"
+                                    + "1)Homicidio\n"
+                                    + "2)Robo\n"
+                                    + "3)Secuestro\n"
+                                    + "Ingrese su opcion:");
+                            tip1 = entrada.nextInt();
+                            while (tip1 < 1 || tip1 > 3) {
+                                System.out.println("Numero ingresado no valido ingrese nuevamente:");
+                                tip1 = entrada.nextInt();
+                            }
+                            switch (tip1) {
+                                case 1:
+                                    tipo1 = "Homicidio";
+                                    ((casos) ca.get(posi)).setTipo1(tipo1);
+                                    break;
+                                case 2:
+                                    tipo1 = "Robo";
+                                    ((casos) ca.get(posi)).setTipo1(tipo1);
+                                    break;
+                                case 3:
+                                    tipo1 = "Secuestro";
+                                    ((casos) ca.get(posi)).setTipo1(tipo1);
+                                    break;
+                            }
+                        }
+                        break;
+                        case 4: {
+                            int tip2;
+                            String estado;
+                            System.out.println("Estado:\n"
+                                    + "1)En proceso\n"
+                                    + "2)Resuelto\n"
+                                    + "Ingrese su opcion:");
+                            tip2 = entrada.nextInt();
+                            while (tip2 < 1 || tip2 > 2) {
+                                System.out.println("Numero ingresado no valido ingrese nuevamente:");
+                                tip2 = entrada.nextInt();
+                            }
+                            if (tip2 == 1) {
+                                estado = "En proceso";
+                                ((casos) ca.get(posi)).setTipo1(estado);
+                            } else if (tip2 == 2) {
+                                estado = "Resuelto";
+                                ((casos) ca.get(posi)).setTipo1(estado);
+                            }
+                        }
+                        break;
+                    }
 
                 }
                 break;
                 case 7: {
 
+                    String salida = "";
+                    System.out.println("Su lista de casos es:\n");
+                    for (Object t : ca) {
+                        salida += "" + ca.indexOf(t) + "=> " + t + "\n";
+                    }
+                    System.out.println(salida);
                 }
                 break;
                 case 8: {
-
+                    String salida = "";
+                    System.out.println("Su lista de casos resueltos es:\n");
+                    for (Object t : pendiente) {
+                        salida += "" + pendiente.indexOf(t) + "=> " + t + "\n";
+                    }
+                    System.out.println(salida);
                 }
                 break;
                 case 9: {
-
+                    String salida = "";
+                    System.out.println("Su lista de casos pendientes es:\n");
+                    for (Object t : resuelto) {
+                        salida += "" + resuelto.indexOf(t) + "=> " + t + "\n";
+                    }
+                    System.out.println(salida);
                 }
                 break;
                 case 10:
