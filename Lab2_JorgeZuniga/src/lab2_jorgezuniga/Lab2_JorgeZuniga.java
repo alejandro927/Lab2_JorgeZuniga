@@ -26,10 +26,10 @@ public class Lab2_JorgeZuniga {
         ArrayList ca = new ArrayList();
         ArrayList resuelto = new ArrayList();
         ArrayList pendiente = new ArrayList();
-
+        //para que salga seleccionando la opcion
         char resp = 's';
         while (resp == 's') {
-            int opp, cont1 = 0, cont2 = 0;
+            int opp;
             System.out.println("=====MENU=====\n"
                     + "1) Agregar detectives\n"
                     + "2) Eliminar detectives.\n"
@@ -43,6 +43,7 @@ public class Lab2_JorgeZuniga {
                     + "10)Salida\n"
                     + "Ingrese la opcion deseada:");
             opp = entrada.nextInt();
+            //cada opcion entra a cada switch
             switch (opp) {
                 case 1: {
                     String nombre, nacionalidad;
@@ -52,6 +53,8 @@ public class Lab2_JorgeZuniga {
                     nombre = entrada.nextLine();
                     System.out.println("Ingrese su edad:");
                     edad = entrada.nextInt();
+                    
+                    //validacion de que si es menor la edad no exista y pida otra
                     while (edad <= 0) {
                         System.out.println("No existe esta edad;Ingrese nuevamente la edad:");
                         edad = entrada.nextInt();
@@ -61,16 +64,19 @@ public class Lab2_JorgeZuniga {
                     nacionalidad = entrada.nextLine();
                     System.out.println("Ingrese sus años laborales:");
                     añosLaborales = entrada.nextInt();
+                    //validacion de que si es menor la edad laboral no exista y pida otra
                     while (añosLaborales <= 0) {
                         System.out.println("No existe este año;Ingrese nuevamente sus años laborales:");
                         añosLaborales = entrada.nextInt();
                     }
                     System.out.println("Ingrese su nivel(del 1 al 10):");
                     nivel = entrada.nextInt();
+                    //validacion para que acepte solamente los niveles estipulados
                     while (nivel <= 0 || nivel > 10) {
                         System.out.println("El nivel ingresado no es valido ingrese nuevamente:");
                         nivel = entrada.nextInt();
                     }
+                    //imprimir la lista de detective cada vez que se cree uno
                     dete.add(new detectives(nombre, nacionalidad, edad, añosLaborales, nivel));
                     String salida = "";
                     for (Object t : dete) {
@@ -80,6 +86,7 @@ public class Lab2_JorgeZuniga {
                 }
                 break;
                 case 2: {
+                    //validacion que si es =0 no entre por que no hay detectives
                     if (dete.isEmpty()) {
                         System.out.println("No hay ningun detective por lo tanto no se puede eliminar");
                         break;
@@ -87,10 +94,12 @@ public class Lab2_JorgeZuniga {
                     int posi;
                     System.out.println("Ingrese la posicion del detective que desea eliminar:");
                     posi = entrada.nextInt();
+                    //validacion para que solo acepte las posiciones existentes
                     if (posi > dete.size() || posi < 0) {
                         System.out.println("No hay nada en la posicion marcada");
                         break;
                     } else {
+                        //aqui remueve al detective en su posicion
                         dete.remove(posi);
                     }
                     String salida = "";
@@ -102,6 +111,7 @@ public class Lab2_JorgeZuniga {
                 }
                 break;
                 case 3: {
+                    //validacion que si es =0 no entre por que no hay detectives
                     if (dete.isEmpty()) {
                         System.out.println("No hay ningun detective por lo tanto no se puede modificar");
                         break;
@@ -109,6 +119,7 @@ public class Lab2_JorgeZuniga {
                     int posi;
                     System.out.println("Ingrese la posicion del detective que desea modificar:");
                     posi = entrada.nextInt();
+                    //validacion para que solo acepte las posiciones existentes
                     if (posi > dete.size() || posi < 0) {
                         System.out.println("No hay nada en la posicion marcada");
                         break;
@@ -122,6 +133,7 @@ public class Lab2_JorgeZuniga {
                                 + "5)Nivel\n"
                                 + "Ingrese su opcion: ");
                         op = entrada.nextInt();
+                        //entra a la opcion que desea modificar
                         switch (op) {
                             case 1: {
                                 String nombre;
@@ -178,6 +190,7 @@ public class Lab2_JorgeZuniga {
                 }
                 break;
                 case 4: {
+                    //imprime la lista de los detectives existentes
                     String salida = "";
                     System.out.println("Su lista de detectives es:\n");
                     for (Object t : dete) {
@@ -195,6 +208,7 @@ public class Lab2_JorgeZuniga {
                             + "2)Resuelto\n"
                             + "Ingrese su opcion:");
                     tip2 = entrada.nextInt();
+                    //valida que solo se acepten estas opciones ya dadas
                     while (tip2 < 1 || tip2 > 2) {
                         System.out.println("Numero ingresado no valido ingrese nuevamente:");
                         tip2 = entrada.nextInt();
@@ -213,6 +227,7 @@ public class Lab2_JorgeZuniga {
                                     + "3)Secuestro\n"
                                     + "Ingrese su opcion:");
                             tip1 = entrada.nextInt();
+                            //valida que solo se acepten estas opciones
                             while (tip1 < 1 || tip1 > 3) {
                                 System.out.println("Numero ingresado no valido ingrese nuevamente:");
                                 tip1 = entrada.nextInt();
@@ -229,9 +244,10 @@ public class Lab2_JorgeZuniga {
                                     break;
                             }
                             System.out.println("Detective a cargo:\n");
+                            //añade a ambos arraylist para que asi al final imprima facilmente los arraylist solicitados
                             resuelto.add(new casos(lugar, descripcion, tipo1, estado));
+                            //arraylist casos(todos)
                             ca.add(new casos(lugar, descripcion, tipo1, estado));
-                            cont1++;
                         }
                         break;
                         case 2: {
@@ -247,10 +263,12 @@ public class Lab2_JorgeZuniga {
                                     + "3)Secuestro\n"
                                     + "Ingrese su opcion:");
                             tip1 = entrada.nextInt();
+                            //valida que solo se acepten estas opciones
                             while (tip1 < 1 || tip1 > 3) {
                                 System.out.println("Numero ingresado no valido ingrese nuevamente:");
                                 tip1 = entrada.nextInt();
                             }
+                            //asi cada opcion representa un String y es mas facil de enviar
                             switch (tip1) {
                                 case 1:
                                     tipo1 = "Homicidio";
@@ -265,14 +283,13 @@ public class Lab2_JorgeZuniga {
                             System.out.println("Detective a cargo:\n");
                             pendiente.add(new casos(lugar, descripcion, tipo1, estado));
                             ca.add(new casos(lugar, descripcion, tipo1, estado));
-                            cont2++;
                         }
                     }
 
                 }
                 break;
                 case 6: {
-
+                    //imprime primero los casos para que sea mas facil para el usuario encontrar que caso desea editar
                     String salida = "";
                     System.out.println("Su lista de casos es:\n");
                     for (Object t : ca) {
@@ -282,6 +299,7 @@ public class Lab2_JorgeZuniga {
                     int posi;
                     System.out.println("Ingrese la posicion del caso que desea modificar:");
                     posi = entrada.nextInt();
+                    //valida que solo se acepten estas opciones
                     if (posi < 0 || posi > ca.size()) {
                         System.out.println("Posicion fuera de rango");
                         break;
@@ -325,10 +343,12 @@ public class Lab2_JorgeZuniga {
                                     + "3)Secuestro\n"
                                     + "Ingrese su opcion:");
                             tip1 = entrada.nextInt();
+                            //valida que solo se acepten estas opciones
                             while (tip1 < 1 || tip1 > 3) {
                                 System.out.println("Numero ingresado no valido ingrese nuevamente:");
                                 tip1 = entrada.nextInt();
                             }
+                            //aqui se esoje la opcion y se devuelve que es lo que desea
                             switch (tip1) {
                                 case 1:
                                     tipo1 = "Homicidio";
@@ -351,6 +371,7 @@ public class Lab2_JorgeZuniga {
                                     + "2)Resuelto\n"
                                     + "Ingrese su opcion:");
                             tip2 = entrada.nextInt();
+                            //valida que solo se acepten estas opciones
                             while (tip2 < 1 || tip2 > 2) {
                                 System.out.println("Numero ingresado no valido ingrese nuevamente:");
                                 tip2 = entrada.nextInt();
@@ -370,7 +391,7 @@ public class Lab2_JorgeZuniga {
                 }
                 break;
                 case 7: {
-
+                    //aqui se enlistan todos los casos
                     String salida = "";
                     System.out.println("Su lista de casos es:\n");
                     for (Object t : ca) {
@@ -380,6 +401,7 @@ public class Lab2_JorgeZuniga {
                 }
                 break;
                 case 8: {
+                    //aqui se enlistan solo los casos resueltos
                     String salida = "";
                     System.out.println("Su lista de casos resueltos es:\n");
                     for (Object t : pendiente) {
@@ -389,6 +411,7 @@ public class Lab2_JorgeZuniga {
                 }
                 break;
                 case 9: {
+                    //aqui solo se enlistan los casos resueltos
                     String salida = "";
                     System.out.println("Su lista de casos pendientes es:\n");
                     for (Object t : resuelto) {
@@ -398,6 +421,7 @@ public class Lab2_JorgeZuniga {
                 }
                 break;
                 case 10:
+                    //salida
                     resp = 'n';
                     break;
             }
