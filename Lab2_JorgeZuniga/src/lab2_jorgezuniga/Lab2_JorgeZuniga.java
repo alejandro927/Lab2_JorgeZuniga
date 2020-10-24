@@ -230,7 +230,7 @@ public class Lab2_JorgeZuniga {
                             }
                             System.out.println("Detective a cargo:\n");
                             resuelto.add(new casos(lugar, descripcion, tipo1, estado));
-                            ca.add(cont1, resuelto);
+                            ca.add(new casos(lugar, descripcion, tipo1, estado));
                             cont1++;
                         }
                         break;
@@ -264,7 +264,7 @@ public class Lab2_JorgeZuniga {
                             }
                             System.out.println("Detective a cargo:\n");
                             pendiente.add(new casos(lugar, descripcion, tipo1, estado));
-                            ca.add(cont2, pendiente);
+                            ca.add(new casos(lugar, descripcion, tipo1, estado));
                             cont2++;
                         }
                     }
@@ -272,7 +272,7 @@ public class Lab2_JorgeZuniga {
                 }
                 break;
                 case 6: {
-                    
+
                     String salida = "";
                     System.out.println("Su lista de casos es:\n");
                     for (Object t : ca) {
@@ -287,6 +287,12 @@ public class Lab2_JorgeZuniga {
                         break;
                     }
                     int op;
+                    String lugar;
+                    int tip1;
+                    String tipo1;
+                    String Descripcion;
+                    int tip2;
+                    String estado;
                     System.out.println("Las modificaciones puede ser a:\n"
                             + "1)Lugar\n"
                             + "2)Descripcion\n"
@@ -296,28 +302,23 @@ public class Lab2_JorgeZuniga {
                     op = entrada.nextInt();
                     switch (op) {
                         case 1: {
-                            String lugar;
                             System.out.println("Ingrese el nuevo lugar:");
                             lugar = entrada.nextLine();
                             lugar = entrada.nextLine();
                             System.out.println("Modificado exitosamente!");
-                            ((casos) ca.get(posi)).setLugar(lugar);
-                            ((Granos_Basicos) granos.get(posi)).setNombre(nombre);
+                            ((casos) (ca.get(posi))).setLugar(lugar);
                         }
                         break;
                         case 2: {
-                            String Descripcion;
                             System.out.println("Ingrese la nueva descripcion:");
                             Descripcion = entrada.nextLine();
                             Descripcion = entrada.nextLine();
                             System.out.println("Modificado exitosamente!");
+                            ((casos) (ca.get(posi))).setDescripcion(Descripcion);
 
-                            ((casos) ca.get(posi)).setDescripcion(Descripcion);
                         }
                         break;
                         case 3: {
-                            int tip1;
-                            String tipo1;
                             System.out.println("Que tipo es:\n"
                                     + "1)Homicidio\n"
                                     + "2)Robo\n"
@@ -331,22 +332,20 @@ public class Lab2_JorgeZuniga {
                             switch (tip1) {
                                 case 1:
                                     tipo1 = "Homicidio";
-                                    ((casos) ca.get(posi)).setTipo1(tipo1);
+                                    ((casos) (ca.get(posi))).setTipo1(tipo1);
                                     break;
                                 case 2:
                                     tipo1 = "Robo";
-                                    ((casos) ca.get(posi)).setTipo1(tipo1);
+                                    ((casos) (ca.get(posi))).setTipo1(tipo1);
                                     break;
                                 case 3:
                                     tipo1 = "Secuestro";
-                                    ((casos) ca.get(posi)).setTipo1(tipo1);
+                                    ((casos) (ca.get(posi))).setTipo1(tipo1);
                                     break;
                             }
                         }
                         break;
                         case 4: {
-                            int tip2;
-                            String estado;
                             System.out.println("Estado:\n"
                                     + "1)En proceso\n"
                                     + "2)Resuelto\n"
@@ -358,10 +357,11 @@ public class Lab2_JorgeZuniga {
                             }
                             if (tip2 == 1) {
                                 estado = "En proceso";
-                                ((casos) ca.get(posi)).setTipo1(estado);
+                                ((casos) (ca.get(posi))).setEstado(estado);
                             } else if (tip2 == 2) {
                                 estado = "Resuelto";
-                                ((casos) ca.get(posi)).setTipo1(estado);
+                                ((casos) (ca.get(posi))).setEstado(estado);//mio XD
+                                //((casos)(ca.get(posi))).setEstado(estado);//tuyo
                             }
                         }
                         break;

@@ -42,7 +42,7 @@ public class casos {
         this.tipo1 = tipo1;
     }
 
-    public void setTipo2(String estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 
@@ -58,7 +58,7 @@ public class casos {
         return tipo1;
     }
 
-    public String getTipo2() {
+    public String getEstado() {
         return estado;
     }
     
